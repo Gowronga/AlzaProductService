@@ -1,10 +1,15 @@
+using AlzaProductService.Api;
+using AlzaProductService.Api.GraphQL;
 using AlzaProductService.Application.Products;
 using AlzaProductService.Infrastructure.Data;
 using AlzaProductService.Infrastructure.Repositories;
-using AlzaProductService.Api.GraphQL;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
+using System.Text;
+using HotChocolate.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +20,10 @@ var useInMemoryDb = builder.Configuration.GetValue<bool>("UseInMemoryDatabase");
 #endregion
 
 #region Services
+// Authentication & Authorization
+builder.AddAlzaAuthentication();
+builder.Services.AddAuthorization();
+
 
 // Controllers (REST)
 builder.Services.AddControllers();
@@ -31,21 +40,8 @@ builder.Services.AddMvc();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
-{
-    options.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "Alza Product Service API",
-        Version = "v1"
-    });
+builder.AddAlzaSwagger();
 
-    options.SwaggerDoc("v2", new OpenApiInfo
-    {
-        Title = "Alza Product Service API",
-        Version = "v2"
-    });
-
-});
 
 // Database (SQL / InMemory switch)
 if (useInMemoryDb)
@@ -68,9 +64,14 @@ else
 // GraphQL
 builder.Services
     .AddGraphQLServer()
+    .AddAuthorization() // <-- Use Nuget HotChocolate.AspNetCore.Authorization
     .AddQueryType<ProductQueries>()
     .AddMutationType<ProductMutations>()
     .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = true);
+
+
+// Add Alza service
+builder.Services.AddAlzaServices();
 
 #endregion
 
@@ -90,6 +91,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

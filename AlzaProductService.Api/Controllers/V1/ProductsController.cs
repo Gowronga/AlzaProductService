@@ -1,8 +1,10 @@
 ﻿using AlzaProductService.Application.Products;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AlzaProductService.Api.Controllers.V1;
 
+[Authorize]
 [ApiController]
 [Route("api/v1/products")]
 [ApiExplorerSettings(GroupName = "v1")]
