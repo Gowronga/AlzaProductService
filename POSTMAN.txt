@@ -1,152 +1,424 @@
 {
-  "info": {
-    "_postman_id": "c4c0c6b1-1f43-4c21-bb3e-3e87c5e2a001",
-    "name": "AlzaProductService API",
-    "description": "REST API collection for AlzaProductService (v1 & v2)",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "variable": [
-    {
-      "key": "baseUrl",
-      "value": "https://localhost:5001",
-      "type": "string"
-    },
-    {
-      "key": "productId",
-      "value": "",
-      "type": "string"
-    }
-  ],
-  "item": [
-    {
-      "name": "REST v1",
-      "item": [
-        {
-          "name": "Get all products (v1)",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/products",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "v1", "products"]
-            }
-          }
-        },
-        {
-          "name": "Get product by ID (v1)",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/products/{{productId}}",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "v1", "products", "{{productId}}"]
-            }
-          }
-        },
-        {
-          "name": "Update product description (v1)",
-          "request": {
-            "method": "PATCH",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "\"Updated product description from Postman\""
-            },
-            "url": {
-              "raw": "{{baseUrl}}/api/v1/products/{{productId}}/description",
-              "host": ["{{baseUrl}}"],
-              "path": [
-                "api",
-                "v1",
-                "products",
-                "{{productId}}",
-                "description"
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "REST v2",
-      "item": [
-        {
-          "name": "Get products (v2 – default pagination)",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/v2/products",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "v2", "products"]
-            }
-          }
-        },
-        {
-          "name": "Get products (v2 – pageSize 10)",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/v2/products?page=1&pageSize=10",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "v2", "products"],
-              "query": [
-                { "key": "page", "value": "1" },
-                { "key": "pageSize", "value": "10" }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get products (v2 – pageSize 30)",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/v2/products?page=1&pageSize=30",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "v2", "products"],
-              "query": [
-                { "key": "page", "value": "1" },
-                { "key": "pageSize", "value": "30" }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get products (v2 – pageSize 50)",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/v2/products?page=1&pageSize=50",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "v2", "products"],
-              "query": [
-                { "key": "page", "value": "1" },
-                { "key": "pageSize", "value": "50" }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get products (v2 – invalid pageSize)",
-          "request": {
-            "method": "GET",
-            "url": {
-              "raw": "{{baseUrl}}/api/v2/products?page=1&pageSize=25",
-              "host": ["{{baseUrl}}"],
-              "path": ["api", "v2", "products"],
-              "query": [
-                { "key": "page", "value": "1" },
-                { "key": "pageSize", "value": "25" }
-              ]
-            }
-          }
-        }
-      ]
-    }
-  ]
+	"info": {
+		"_postman_id": "b059c002-b498-4a7f-a191-a88c2e137eb4",
+		"name": "AlzaProductService API",
+		"description": "REST API collection for AlzaProductService (v1 & v2)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7360021"
+	},
+	"item": [
+		{
+			"name": "API",
+			"item": [
+				{
+					"name": "REST v1",
+					"item": [
+						{
+							"name": "Get all products (v1)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get product by ID (v1)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/products/23bcf505-4d0d-4350-adea-c37a9a5eeeb5",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"23bcf505-4d0d-4350-adea-c37a9a5eeeb5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get product by ID (v1) Copy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/products/{{productId}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"{{productId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update product description (v1)",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\"Updated product description from Postman\""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/v1/products/{{productId}}/description",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"{{productId}}",
+										"description"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "REST v2",
+					"item": [
+						{
+							"name": "Get products (v2 – default pagination)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v2/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get products (v2 – pageSize 10)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v2/products?page=1&pageSize=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get products (v2 – pageSize 30)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v2/products?page=1&pageSize=30",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "30"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get products (v2 – pageSize 50)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v2/products?page=1&pageSize=50",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "50"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get products (v2 – invalid pageSize)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/v2/products?page=1&pageSize=25",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"v2",
+										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "25"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GraphQL",
+					"item": [
+						{
+							"name": "Get all products (v1) Graph",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\": \"query { products(page: 1, pageSize: 10) { id name price description } }\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/graphql",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all products (v1) Graph By Id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\": \"query GetProductById($id: UUID!) { productById(id: $id) { id name imgUri price description } }\",\r\n  \"variables\": {\r\n    \"id\": \"{{productId}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/graphql",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{accessToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "auth/token",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"clientId\": \"alza-client\",\r\n  \"clientSecret\": \"super-secret-value\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/token",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:5001"
+		},
+		{
+			"key": "productId",
+			"value": ""
+		},
+		{
+			"key": "accessToken",
+			"value": ""
+		}
+	]
 }
