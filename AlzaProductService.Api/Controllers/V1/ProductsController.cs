@@ -10,8 +10,9 @@ namespace AlzaProductService.Api.Controllers.V1;
 [ApiExplorerSettings(GroupName = "v1")]
 public class ProductsController : ControllerBase
 {
-    private readonly IProductRepository _repository;
+    private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
+    private readonly IProductRepository _repository;
     public ProductsController(IProductRepository repository)
     {
         _repository = repository;
@@ -23,7 +24,13 @@ public class ProductsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ProductDto>>> GetAll()
     {
+        Logger.Info("Fetching all products");
+        //_logger.LogInformation("Fetching all products");
+
         var products = await _repository.GetAllAsync(1, int.MaxValue);
+
+        Logger.Info($"Returned {products.Count} products");
+        //_logger.LogInformation($"Returned {products.Count} products");
 
         var result = products.Select(p => new ProductDto(p.Id, p.Name, p.ImgUri, p.Price, p.Description));
 
