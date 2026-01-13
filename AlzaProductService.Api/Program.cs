@@ -1,4 +1,5 @@
 using AlzaProductService.Api;
+using AlzaProductService.Api.Auth;
 using AlzaProductService.Api.GraphQL;
 using AlzaProductService.Application.Products;
 using AlzaProductService.Infrastructure.Data;
@@ -79,7 +80,8 @@ try
 
 
     // Add Alza service
-    builder.Services.AddAlzaServices();
+    builder.Services.AddSingleton<JwtTokenService>();
+    //builder.Services.AddAlzaServices();
 
     #endregion
 
