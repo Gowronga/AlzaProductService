@@ -9,12 +9,12 @@ public class MockProductRepository : IProductRepository
 {
     private readonly List<Product> _products;
 
-    public MockProductRepository()
-    {
-        var products = ProductSeedGenerator.Generate(count: 50, randomSeed: 1234);
+    //public MockProductRepository()
+    //{
+    //    var products = ProductSeedGenerator.Generate(count: 50, randomSeed: 1234);
 
-        _products = products;
-    }
+    //    _products = products;
+    //}
 
     public MockProductRepository(List<Product> products)
     {

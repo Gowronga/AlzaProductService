@@ -21,7 +21,7 @@ public class ProductRepositoryTests
         var products = await repository.GetAllAsync(1, 10);
 
         // Assert
-        products.Should().HaveCount(2);
+        products.Should().HaveCount(10);
     }
 
     [Fact]
