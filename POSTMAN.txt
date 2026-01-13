@@ -38,26 +38,6 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/v1/products/23bcf505-4d0d-4350-adea-c37a9a5eeeb5",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"v1",
-										"products",
-										"23bcf505-4d0d-4350-adea-c37a9a5eeeb5"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get product by ID (v1) Copy",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
 									"raw": "{{baseUrl}}/api/v1/products/{{productId}}",
 									"host": [
 										"{{baseUrl}}"
@@ -282,9 +262,6 @@
 						{
 							"name": "Get all products (v1) Graph By Id",
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "POST",
 								"header": [
 									{
@@ -296,6 +273,38 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n  \"query\": \"query GetProductById($id: UUID!) { productById(id: $id) { id name imgUri price description } }\",\r\n  \"variables\": {\r\n    \"id\": \"{{productId}}\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/graphql",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"graphql"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all products (v1) Graph By Id Partial",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"query\": \"query GetProductById($id: UUID!) { productById(id: $id) { id name price } }\",\r\n  \"variables\": {\r\n    \"id\": \"{{productId}}\"\r\n  }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -354,11 +363,8 @@
 		},
 		{
 			"name": "auth/token",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
